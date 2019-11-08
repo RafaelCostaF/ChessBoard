@@ -1,7 +1,6 @@
 /*
  
 Class that has the functions to manipulate the chess board.
-
 - Initialize the board.
 - Put pieces in the board.
 - Print the board to the user (screen).
@@ -26,8 +25,13 @@ public:
         }
     }
 
+    void resetBoolBoard(){
+        for (int i = 0 ; i < 64 ; i++){
+            this->boolBoard[i] = false;
+        }
+    }
 
-    // Putting pieces on the board 
+    // Putting pieces on the board if there's no piece, and take out the piece if the place is already occupied
     bool putPieceInBoolBoard(unsigned short rank, unsigned short file){
 
         rank -= 48; // (Number) Makes the char value of ascii becomes a number (1 in ascii is 49 ; 49 - 48 = 1)
@@ -43,7 +47,10 @@ public:
             this->boolBoard[pos] = true;
             return true;   // New piece on the board.
         }
-        else return false; // Already has a piece there.
+        else {
+            this->boolBoard[pos] = false;
+            return false; // Taking out the piece that is there
+        }
 
         // B = Black || W = White
         //
@@ -81,7 +88,7 @@ public:
                 std::cout << "\n" << rank << " "; // Next Line and 'rank'
                 rank++;
             }
-            std::cout << this->board[i] << " "; // Printing board
+            std::cout << this->boolBoard[i] << " "; // Printing board
         }
         std::cout << "\n";
     }
@@ -89,6 +96,7 @@ public:
 
     // Converting the board to 64 bits in format of an int(64 bits integer)
     uint64_t boolBoardTo64BitsInteger(){
+        this->intBoard64Bits = 0;
         uint64_t auxPower = 1;
         for(int i = 63 ; i > -1 ; i--){
             this->intBoard64Bits += this->boolBoard[i] * auxPower ;
@@ -104,9 +112,9 @@ public:
 
         for (int i = 0 ; i < 64 ; i++){
             if (this->boolBoard[i] == true){
-                file = i%8 + 49;      // (Letter) Makes the number becomes the char "a" in ascii (a in ascii is 97 ; 1 + 96 = 97) 
-                rank = (i+1)/8 + 97 ; // (Number) Makes the number becomes the char "1" in ascii (1 in ascii is 49 ; 1 + 48 = 49)
-                std::cout << file << rank << std::endl;
+                file = i%8 + 97 ;     // (Letter) Makes the number becomes the char "a" in ascii (a in ascii is 97 ; 1 + 96 = 97) 
+                rank = i/8 + 49; // (Number) Makes the number becomes the char "1" in ascii (1 in ascii is 49 ; 1 + 48 = 49)
+                std::cout << "-= "<< rank << "-" << file << std::endl;
             }
         }
     }
@@ -121,5 +129,4 @@ public:
             j--;
         }
     }
-
 };

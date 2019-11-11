@@ -1,7 +1,6 @@
-// Fix lines with "system pause" to make the code portable
-
 #include <iostream>
 #include <bitset>
+#include <stdio.h>
 #include "clear.h"
 #include "boardFunctions.h"
 
@@ -32,10 +31,10 @@ int main(){
         std::cout                                                            << std::endl;
         std::cout << "=====================================================" << std::endl;
         std::cout                                                            << std::endl;
-        std::cout << "-= Option : "; 
+        std::cout << "-= Option : ";
         std::cin.clear();
-        std::cin  >> option; 
-        
+        std::cin  >> option;
+
         if ((option == 'e') || (option == 'E')) return 0; // Char 'Delete' = 127
 
         switch (option){
@@ -46,7 +45,7 @@ int main(){
                 std::cout << "===== BOARD TO INTEGER =====" << std::endl;
                 std::cout << "\n\n";
                 std::cout << "-= Integer that represent the board : " << board.boolBoardTo64BitsInteger() << "\n\n";
-                system("pause");
+                scanf();
                 break;
             case '2':
                 clearScreen();
@@ -55,9 +54,8 @@ int main(){
                 std::cout << "\n\n";
                 std::cout << "-= If you put a piece where there's another piece,\n";
                 std::cout << "-= this piece will be delete.\n\n\n";
+                scanf();
 
-                system("pause");
-                
                 thereAreMorePieces = true;
 
                 while(thereAreMorePieces){
@@ -74,7 +72,7 @@ int main(){
                     std::cin  >> rank;
                     if ((rank > '8') || (rank < '1')){
                         std::cout << "\nInvalid rank \n" << std::endl;
-                        system("pause");
+                        scanf();
                         break; // Returns to the menu
                     }
                     std::cout << "-= Write the file (a to h): ";
@@ -82,7 +80,7 @@ int main(){
                     std::cin  >> file;
                     if ((file > 'h') || (file < 'a')){
                         std::cout << "\nInvalid file \n" << std::endl;
-                        system("pause");
+                        scanf();
                         break; // Returns to the menu
                     }
 
@@ -102,8 +100,8 @@ int main(){
                     std::cin  >> thereAreMorePieces;
                 }
                 break;
-            
-            case '3': 
+
+            case '3':
                 clearScreen();
                 std::cout << "\n\n";
                 std::cout << "===== BOARD TO INTEGER =====" << std::endl;
@@ -113,9 +111,9 @@ int main(){
                 std::cin  >> integerToBoolBoard;
                 board.integerToBoolBoard(integerToBoolBoard);
                 std::cout << "\n\n";
-                system("pause");
+                scanf();
                 break;
-            
+
             case '4':
                 clearScreen();
                 std::cout << "\n\n";
@@ -123,7 +121,7 @@ int main(){
                 std::cout << "\n\n";
                 board.printBoard();
                 std::cout << "\n\n";
-                system("pause");
+                scanf();
                 break;
             case '5':
                 clearScreen();
@@ -132,7 +130,7 @@ int main(){
                 std::cout << "\n\n";
                 board.positionsInBoolBoard();
                 std::cout << "\n\n";
-                system("pause");
+                scanf();
                 break;
             case '0':
                 clearScreen();
@@ -142,7 +140,7 @@ int main(){
                 board.resetBoolBoard();
                 std::cout << "\n\n";
                 std::cout << "-= The board has been reseted.\n\n";
-                system("pause");
+                scanf();
                 break;
         }
     }

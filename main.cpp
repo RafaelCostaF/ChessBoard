@@ -1,6 +1,18 @@
+// This program is used to represent the chess board occupying the less space that is needed in 
+// memory (64 bits) without any specification of the piece that is in the board.
+// The pieces can be put by an integer that represent this board or putting piece by piece.
+
+
+
+// This section of code is used to pause the screen.
+        //  " scanf("%c",&garbageForScreenPause); "
+        //  " scanf("%c",&garbageForScreenPause); "
+// It's implemented this way to make the code portable.
+
+
 #include <iostream>
-#include <bitset>
 #include <stdio.h>
+#include <bitset>
 #include "clear.h"
 #include "boardFunctions.h"
 
@@ -14,6 +26,7 @@ int main(){
 
     uint64_t integerToBoolBoard;
 
+    char garbageForScreenPause;
 
     for(;;){
         clearScreen();
@@ -31,10 +44,10 @@ int main(){
         std::cout                                                            << std::endl;
         std::cout << "=====================================================" << std::endl;
         std::cout                                                            << std::endl;
-        std::cout << "-= Option : ";
+        std::cout << "-= Option : "; 
         std::cin.clear();
-        std::cin  >> option;
-
+        std::cin  >> option; 
+        
         if ((option == 'e') || (option == 'E')) return 0; // Char 'Delete' = 127
 
         switch (option){
@@ -45,7 +58,8 @@ int main(){
                 std::cout << "===== BOARD TO INTEGER =====" << std::endl;
                 std::cout << "\n\n";
                 std::cout << "-= Integer that represent the board : " << board.boolBoardTo64BitsInteger() << "\n\n";
-                scanf();
+                scanf("%c",&garbageForScreenPause);
+                scanf("%c",&garbageForScreenPause);
                 break;
             case '2':
                 clearScreen();
@@ -54,8 +68,10 @@ int main(){
                 std::cout << "\n\n";
                 std::cout << "-= If you put a piece where there's another piece,\n";
                 std::cout << "-= this piece will be delete.\n\n\n";
-                scanf();
 
+                scanf("%c",&garbageForScreenPause);
+                scanf("%c",&garbageForScreenPause);
+                
                 thereAreMorePieces = true;
 
                 while(thereAreMorePieces){
@@ -72,7 +88,8 @@ int main(){
                     std::cin  >> rank;
                     if ((rank > '8') || (rank < '1')){
                         std::cout << "\nInvalid rank \n" << std::endl;
-                        scanf();
+                        scanf("");
+                        scanf("");
                         break; // Returns to the menu
                     }
                     std::cout << "-= Write the file (a to h): ";
@@ -80,7 +97,8 @@ int main(){
                     std::cin  >> file;
                     if ((file > 'h') || (file < 'a')){
                         std::cout << "\nInvalid file \n" << std::endl;
-                        scanf();
+                        scanf("");
+                        scanf("");
                         break; // Returns to the menu
                     }
 
@@ -100,8 +118,8 @@ int main(){
                     std::cin  >> thereAreMorePieces;
                 }
                 break;
-
-            case '3':
+            
+            case '3': 
                 clearScreen();
                 std::cout << "\n\n";
                 std::cout << "===== BOARD TO INTEGER =====" << std::endl;
@@ -111,9 +129,10 @@ int main(){
                 std::cin  >> integerToBoolBoard;
                 board.integerToBoolBoard(integerToBoolBoard);
                 std::cout << "\n\n";
-                scanf();
+                scanf("%c",&garbageForScreenPause);
+                scanf("%c",&garbageForScreenPause);
                 break;
-
+            
             case '4':
                 clearScreen();
                 std::cout << "\n\n";
@@ -121,7 +140,8 @@ int main(){
                 std::cout << "\n\n";
                 board.printBoard();
                 std::cout << "\n\n";
-                scanf();
+                scanf("%c",&garbageForScreenPause);
+                scanf("%c",&garbageForScreenPause);
                 break;
             case '5':
                 clearScreen();
@@ -130,7 +150,8 @@ int main(){
                 std::cout << "\n\n";
                 board.positionsInBoolBoard();
                 std::cout << "\n\n";
-                scanf();
+                scanf("%c",&garbageForScreenPause);
+                scanf("%c",&garbageForScreenPause);
                 break;
             case '0':
                 clearScreen();
@@ -140,7 +161,8 @@ int main(){
                 board.resetBoolBoard();
                 std::cout << "\n\n";
                 std::cout << "-= The board has been reseted.\n\n";
-                scanf();
+                scanf("%c",&garbageForScreenPause);
+                scanf("%c",&garbageForScreenPause);
                 break;
         }
     }

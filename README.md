@@ -26,7 +26,9 @@ O SOAP é o protocolo utilizado pela BIZ para que sejam efetuadas as transaçõe
 <Explicação a respeito de cancelamento de compra>
 ```
 Dúvidas que aparecem com frequência são : 
-
+<ALTERAR ESTE CAMPO>
+    <EXTORNO SÓ PODE SER FEITO NO MESMO DIA>
+        <JÁ EXISTE A OPÇÃO DE CONFIRMAÇÃO DE COMPRA>
 - Lançamento da compra na hora que for feita, mas apenas efetuar a confirmação/cancelamento na hora da retirada do produto ou confirmar valor menor(para o caso de a loja não possuir o produto na hora e o valor da compra ser menor do que o que foi orçado inicialmente no site).
 - Realização de extornos parciais.
 
